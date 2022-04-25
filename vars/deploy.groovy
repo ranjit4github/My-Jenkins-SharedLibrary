@@ -6,7 +6,7 @@ def call(){
   for (String server in server_list.split(',')){
     echo "${server}"
     sh '''
-      scp -v -o StrictHostKeyChecking=no **/*.war root@${server}:/opt/tomcat/webapps/
+      scp -v -o StrictHostKeyChecking=no **/*.war root@${env.server}:/opt/tomcat/webapps/
     '''
   }
 }
