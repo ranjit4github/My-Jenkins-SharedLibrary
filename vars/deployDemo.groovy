@@ -1,4 +1,4 @@
 def test (){
   echo "Deploying the Artifact!"
-  echo "Demo Variable : ${demoVar}"
+  echo "Demo Variable : ${env.demoVar}"
 }
