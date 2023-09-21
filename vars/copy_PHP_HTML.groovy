@@ -1,13 +1,13 @@
 def copyfile(){
   echo "Coping Application files"
-  if ("${staging_server}" == "dev"){
+  if ("${env}" == "dev"){
       sh '''
-        rsync -avzh ${WORKSPACE} --exclude 'Jenkinsfile' --exclude '.git' root@${staging_server}:/var/www/html/
+        rsync -avzh ${WORKSPACE} --exclude 'Jenkinsfile' --exclude '.git' root@${server}:/var/www/html/
       '''
-  }else if("${staging_server}" == "prod")
+  }else if("${env}" == "prod")
   {
       sh '''
-        rsync -avzhe ${WORKSPACE} --exclude 'Jenkinsfile' --exclude '.git' root@${staging_server}:/home/ec2-user/
+        rsync -avzhe ${WORKSPACE} --exclude 'Jenkinsfile' --exclude '.git' root@${server}:/home/ec2-user/
       '''      
   }
 }
