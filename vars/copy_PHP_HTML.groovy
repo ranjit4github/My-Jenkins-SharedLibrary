@@ -1,7 +1,7 @@
 def copyfile(){
   echo "Coping Application files"
   sh '''
-    echo "Envvironment: ${environ}"
+    echo "Copying Files to ${environ} Server"
   '''
   if (env.environ == "dev"){
       sh '''
