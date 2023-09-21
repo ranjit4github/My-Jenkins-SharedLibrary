@@ -1,6 +1,8 @@
 def copyfile(){
   echo "Coping Application files"
-  echo "Envvironment: ${env}"
+  sh '''
+    echo "Envvironment: ${env}"
+  '''
   if (${env} == "dev"){
       sh '''
         rsync -avzh ${WORKSPACE} --exclude 'Jenkinsfile' --exclude '.git' root@${server}:/var/www/html/
