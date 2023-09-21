@@ -10,7 +10,7 @@ def copyfile(){
   }else if(env.environ == "prod")
   {
       sh '''
-        rsync -avzhe ${WORKSPACE} --exclude 'Jenkinsfile' --exclude '.git' root@${server}:/var/www/test/
+        rsync -avzh ${WORKSPACE} --exclude 'Jenkinsfile' --exclude '.git' root@${server}:/var/www/test/
       '''      
   }
 }
