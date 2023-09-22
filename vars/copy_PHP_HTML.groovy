@@ -5,12 +5,12 @@ def copyfile(){
   '''
   if (env.environ == "dev"){
       sh '''
-        rsync -avzh ${WORKSPACE}/* --exclude 'Jenkinsfile' --exclude '.git' ${userid}@${server}:/var/www/html/${AppName}
+        rsync -avzh ${WORKSPACE}/* --exclude 'Jenkinsfile' --exclude '.git' ${userid}@${server}:${deployPath}${AppName}
       '''
   }else if(env.environ == "prod")
   {
       sh '''
-        rsync -avzh ${WORKSPACE}/* --exclude 'Jenkinsfile' --exclude '.git' ${userid}@${server}:/var/www/test/
+        rsync -avh -e "ssh -p 65002" ${WORKSPACE}/* --exclude 'Jenkinsfile' --exclude '.git' ${userid}@${server}:${deployPath}
       '''      
   }
 }
