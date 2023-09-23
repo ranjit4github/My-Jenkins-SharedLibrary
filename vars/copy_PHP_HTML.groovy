@@ -13,7 +13,7 @@ def copyfile(){
   }else if(env.environ == "prod")
   {
       sh '''
-        rsync -avh -e "ssh -p 65002" ${WORKSPACE}/* --exclude 'Jenkinsfile' --exclude '.git' ${userid}@${server}:${deployPath}
+        rsync -avh -e "ssh -p 65002" ${WORKSPACE}/* --exclude 'Jenkinsfile' --exclude '.git' --exclude 'config.php' ${userid}@${server}:${deployPath}
       '''      
   }
 }
