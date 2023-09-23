@@ -2,18 +2,26 @@
 // Declare and assign the variables in the Jenkinsfile of the appication repo.
 
 def copyfile(){
-  echo "Coping Application files"
-  sh '''
-    echo "Copying Files to ${environ} Server"
-  '''
-  if (env.environ == "dev"){
+  stage('Copy Files'){
+    script{
+      echo "Coping Application files"
       sh '''
-        rsync -avzh ${WORKSPACE}/* --exclude-from 'exclude-list.txt' ${userid}@${server}:${deployPath}${AppName}
+        echo "Copying Files to ${environ} Server"
       '''
-  }else if(env.environ == "prod")
-  {
-      sh '''
-        rsync -avh -e "ssh -p 65002" ${WORKSPACE}/* --exclude-from 'exclude-list.txt' ${userid}@${server}:${deployPath}
-      '''      
+      if (env.environ == "dev"){
+          sh '''
+            rsync -avzh ${WORKSPACE}/* --exclude-from 'exclude-list.txt' ${userid}@${server}:${deployPath}${AppName}
+          '''
+      }else if(env.environ == "prod")
+      {
+          timeout(time: 30, unit: "MINUTES") {
+            input message: 'Do you want to approve the Deployment?', ok: 'Approve'
+          }
+          echo "Initiating deployment"
+          sh '''
+            rsync -avh -e "ssh -p 65002" ${WORKSPACE}/* --exclude-from 'exclude-list.txt' ${userid}@${server}:${deployPath}
+          '''      
+      }
+    }
   }
 }
