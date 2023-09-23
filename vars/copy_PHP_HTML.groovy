@@ -15,7 +15,7 @@ def copyfile(){
       }else if(env.environ == "prod")
       {
           timeout(time: 30, unit: "MINUTES") {
-            input message: 'Do you want to approve the Deployment?', ok: 'Approve'
+            input message: 'Do you want to approve the Deployment?', ok: 'Yes'
           }
           echo "Initiating deployment"
           sh '''
