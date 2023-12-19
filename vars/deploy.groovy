@@ -18,7 +18,7 @@ def react(){
   echo "Deploying React Application"
 
   sh '''
-    unzip ${WORKSPACE}/build.zip
+    unzip -o ${WORKSPACE}/build.zip
     rsync -avzh ${WORKSPACE}/build/* --exclude-from 'exclude-list.txt' ${userid}@${server}:${deployPath}
   '''
 }
