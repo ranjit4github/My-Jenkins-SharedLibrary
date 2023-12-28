@@ -11,8 +11,7 @@ def react(){
     cd /d F:
     cd F:\\${appName}\\
     npm run build
+    
+    powershell Compress-Archive -Path "build\\*" -DestinationPath "${appName}_${BUILD_NUMBER}.zip"
   """
-    bat """
-        powershell Compress-Archive -Path "build\\*" -DestinationPath "${appName}_${BUILD_NUMBER}.zip"
-    """
 }
