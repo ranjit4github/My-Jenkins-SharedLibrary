@@ -11,6 +11,6 @@ def push2Remote(){
     git config --global user.name "${userName}"
     git add . 
     git commit -m "Updated as part of Build - ${BUILD_NUMBER}"
-    git push
+    git push origin master
   '''
 }
