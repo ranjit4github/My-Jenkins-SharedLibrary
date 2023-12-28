@@ -10,7 +10,7 @@ def react(){
   bat """
     cd /d F:
     cd F:\\mbgheri\\
-    CI=false npm run build
+    npm run build
   """
     bat """
         powershell Compress-Archive -Path "Build\\*" -DestinationPath "${appName}_${BUILD_NUMBER}.zip"
