@@ -9,10 +9,10 @@ def react(){
   echo "Building React Application"
   bat """
     cd /d F:
-    cd F:\\mbgheri\\
+    cd F:\\${appName}\\
     npm run build
   """
     bat """
-        powershell Compress-Archive -Path "Build\\*" -DestinationPath "${appName}_${BUILD_NUMBER}.zip"
+        powershell Compress-Archive -Path "build\\*" -DestinationPath "${appName}_${BUILD_NUMBER}.zip"
     """
 }
