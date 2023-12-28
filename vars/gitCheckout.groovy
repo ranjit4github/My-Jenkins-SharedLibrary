@@ -11,7 +11,7 @@ def push2Remote(){
     git config --global user.name "${userName}"
     git pull
     git add . 
-    git commit -m "Commited by Jenkins"
+    git commit -m "Commited by Jenkins Build Number ${BUILD_NUMBER}"
     git push
   """
 }
