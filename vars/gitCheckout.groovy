@@ -5,7 +5,8 @@ def checkout (){
 def push2Remote(){
   bat '''
     cd /d F:
-    cd F:\\mbgheri\\
+    cd F:\\"${appName}"\\
+    git config --global --add safe.directory F:/${appName}
     git config --global user.email "${userEmail}"
     git config --global user.name "${userName}"
     git add . 
