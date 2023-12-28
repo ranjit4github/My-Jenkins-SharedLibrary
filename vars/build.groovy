@@ -7,9 +7,12 @@ def java(){
 
 def react(){
   echo "Building React Application"
-  bat '''
+  bat """
     cd /d F:
-    cd F:\\marlinapp\\
+    cd F:\\mbgheri\\
     npm run build
-  '''
+  """
+    bat """
+        powershell Compress-Archive -Path "Build\\*" -DestinationPath "${appName}_${BUILD_NUMBER}.zip"
+    """
 }
