@@ -9,7 +9,6 @@ def push2Remote(){
     git config --global --add safe.directory F:/${appName}
     git config --global user.email "${userEmail}"
     git config --global user.name "${userName}"
-    git pull
     git add . 
     git commit -m "Commited by Jenkins Build Number ${BUILD_NUMBER}"
     git push
