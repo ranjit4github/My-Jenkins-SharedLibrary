@@ -1,3 +1,3 @@
 def call(){
-  echo "Building Demo Application"
+    sh 'mvn clean package'
 }
