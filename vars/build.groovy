@@ -1,3 +1,8 @@
+//This script is to build the application
+/*
+Multiple build functions are created
+An example of multiline comment
+*/
 def java(){
     echo "Building java project"
     sh '''
