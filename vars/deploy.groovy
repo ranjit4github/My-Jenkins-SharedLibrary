@@ -1,5 +1,8 @@
 // Deploy war file into multiple servers
 // In Jenkinsfile create a variable staging_server and add servers in comma separated
+def call(){
+  echo "Deploying the Artifact"
+}
 def war(){
   echo "Deploying War file"
   
